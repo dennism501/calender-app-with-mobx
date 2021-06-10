@@ -1,9 +1,10 @@
 import React from "react";
+import Home from "./containers/Home";
 
 function App() {
   return (
     <>
-      <p>Hello World!</p>
+      <Home />
     </>
   );
 }
