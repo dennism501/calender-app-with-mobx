@@ -11,7 +11,7 @@ const DaysOfTheWeek: React.FunctionComponent<Days> = ({ weekDays }) => {
         <CalendarHeader>
             <WeekdayContainer>
                 {weekDays.map((name, index) => (
-                    <li key={index}>{name}</li>
+                    <WeekDayNameBox key={index}>{name}</WeekDayNameBox>
                 ))}
             </WeekdayContainer>
         </CalendarHeader>

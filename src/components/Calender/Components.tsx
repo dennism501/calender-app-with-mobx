@@ -51,6 +51,7 @@ export const CalendarBody = styled.ol`
     padding: 0;
     margin: 0;
     list-style: none;
+  
 `
 
 export const CalenderDay = styled.li`
@@ -64,6 +65,11 @@ export const CalenderDay = styled.li`
     background-color: #fff;
     color: var(--grey-800);
     padding: 5px;
+    &:hover {
+        background-color:  #e4e9f0;
+        cursor: pointer;
+    }
+    
    
 `
 
