@@ -55,12 +55,14 @@ export const CalendarBody = styled.ol`
 `
 
 export const CalenderDay = styled.li`
-
     position: relative;
     min-height: 100px;
     font-size: 16px;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     list-style: none;
     background-color: #fff;
     color: var(--grey-800);
@@ -68,8 +70,14 @@ export const CalenderDay = styled.li`
     &:hover {
         background-color:  #e4e9f0;
         cursor: pointer;
-    }
-    
-   
+    }  
+`
+
+export const CalenderMarker = styled.span`
+    height: 25px;
+    width: 25px;
+    background-color: #5d7bdd;
+    border-radius: 50%;
+    display: inline-block;
 `
 
