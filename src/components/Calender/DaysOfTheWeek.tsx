@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react';
 import React from 'react';
 import { CalendarHeader, WeekdayContainer, WeekDayNameBox } from './Components';
 
@@ -19,4 +20,4 @@ const DaysOfTheWeek: React.FunctionComponent<Days> = ({ weekDays }) => {
     );
 }
 
-export default DaysOfTheWeek;
+export default observer(DaysOfTheWeek);

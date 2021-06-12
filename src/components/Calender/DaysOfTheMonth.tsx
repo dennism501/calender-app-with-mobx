@@ -1,19 +1,17 @@
+import { observer } from 'mobx-react';
 import React from 'react';
+import { Calendar } from '../../store/interfaces/Calendar';
+import { useCalendarStore } from '../MobxProvider/Provider';
 import { CalendarBody, CalenderDay, CalenderMarker } from './Components';
 
-interface CalendarDays {
-    days: string[]
+const DaysOfTheMonth: React.FunctionComponent = () => {
 
-}
-
-
-const DaysOfTheMonth: React.FunctionComponent<CalendarDays> = ({ days }) => {
-
+    let days: Calendar[] = useCalendarStore().calender
     return (
         <CalendarBody>
             {days.map((day, index) => (
                 <CalenderDay onClick={() => console.log("Nothing")} key={index}>
-                    {day}
+                    {day.day}
                     <CalenderMarker />
                 </CalenderDay>
             ))}
@@ -22,4 +20,4 @@ const DaysOfTheMonth: React.FunctionComponent<CalendarDays> = ({ days }) => {
     );
 }
 
-export default DaysOfTheMonth;
+export default observer(DaysOfTheMonth);

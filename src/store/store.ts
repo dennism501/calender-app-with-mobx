@@ -1,14 +1,48 @@
 import { makeAutoObservable } from "mobx";
-import { Calender } from "./interfaces/Calendar";
+import { Calendar, Reminder } from "./interfaces/Calendar";
 
 //TODO: Add a context provider
 //TODO: Add CRUD functions for the calender
 
+/**
+ * @param calender The current value of the store
+ * @param day the day the reminder was set
+ * @returns a new copy of the calendar store without the date passed
+ */
+const removeReminder = (calender: Calendar[], day: number): Calendar[] => {
+  return calender.filter((date) => date.day !== day);
+};
+
+/**
+ * @param calendar The current value of the store
+ * @param dates the number of days in the current month e.g {28 || 29 || 30 || 31 }
+ * @returns a new calendar store with the current days of the month
+ */
+const addDays = (calendar: Calendar[], dates: number): Calendar[] => {
+  for (let index = 1; index <= dates; index++) {
+    calendar.push({ day: index });
+  }
+  return calendar;
+};
+
 export class Store {
-  calender: Calender[] = [];
-  newReminder: string = "";
+  calender: Calendar[] = [];
+  newReminder: Reminder = {};
+  dates: number = 0;
+
   constructor() {
     makeAutoObservable(this);
+  }
+
+  removeReminder(day: number) {
+    this.calender = removeReminder(this.calender, day);
+  }
+
+  createReminder(day: number) {}
+
+  addDaysOfTheMonth(dates: number) {
+    this.calender = addDays(this.calender, dates);
+    this.dates = 0;
   }
 }
 
