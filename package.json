@@ -10,10 +10,13 @@
     "@types/node": "^15.12.2",
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.7",
+    "mobx": "^6.3.2",
+    "mobx-react": "^7.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "styled-components": "^5.3.0",
+    "styled-react-modal": "^2.1.0",
     "typescript": "^4.3.2",
     "web-vitals": "^1.1.2"
   },
@@ -43,5 +46,6 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.10",
+    "@types/styled-react-modal": "^1.2.0"
   }
 }

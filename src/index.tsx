@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { CalendarStoreProvider } from './components/MobxProvider/Provider';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CalendarStoreProvider>
+      <App />
+    </CalendarStoreProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
