@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Modal from 'styled-react-modal'
 
 export const CalendarHeader = styled.section`
     display: flex;
@@ -73,6 +74,8 @@ export const CalenderDay = styled.li`
     }  
 `
 
+
+// add prop to change color for reminder icon 
 export const CalenderMarker = styled.span`
     height: 25px;
     width: 25px;
@@ -80,4 +83,14 @@ export const CalenderMarker = styled.span`
     border-radius: 50%;
     display: inline-block;
 `
+export const ReminderModal = Modal.styled`
+  width: 20rem;
+  height: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5d7bdd;
+`
+
+
 
