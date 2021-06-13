@@ -25,6 +25,14 @@ const addDays = (calendar: Calendar[], dates: number): Calendar[] => {
   return calendar;
 };
 
+const addReminder = (
+  calendar: Calendar[],
+  date: number,
+  reminder: Reminder
+): Calendar[] => {
+  return calendar.splice(date + 1, 0, { day: date, reminder: reminder });
+};
+
 export class Store {
   calender: Calendar[] = [];
   newReminder: Reminder = {};
@@ -38,7 +46,9 @@ export class Store {
     this.calender = removeReminder(this.calender, day);
   }
 
-  createReminder(day: number) {}
+  createReminder(day: number, reminder: Reminder) {
+    this.calender = addReminder(this.calender, day, reminder);
+  }
 
   addDaysOfTheMonth(dates: number) {
     this.calender = addDays(this.calender, dates);
