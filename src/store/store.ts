@@ -1,8 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { Calendar, Reminder } from "./interfaces/Calendar";
-
-//TODO: Add a context provider
-//TODO: Add CRUD functions for the calender
+import { Calendar } from "./interfaces/Calendar";
 
 /**
  * @param calender The current value of the store
@@ -25,17 +22,23 @@ const addDays = (calendar: Calendar[], dates: number): Calendar[] => {
   return calendar;
 };
 
-const addReminder = (
-  calendar: Calendar[],
-  date: number,
-  reminder: Reminder
-): Calendar[] => {
-  return calendar.splice(date + 1, 0, { day: date, reminder: reminder });
+/**
+ * @param calendar The current value of the store
+ * @returns An updated state of the store
+ */
+const addReminder = (reminder: Calendar, calender: Calendar[]): Calendar[] => {
+  const updatedCalendar = calender.map((date) => {
+    if (date.day === reminder.day) {
+      return { ...reminder };
+    }
+    return date;
+  });
+
+  return (calender = updatedCalendar);
 };
 
 export class Store {
   calender: Calendar[] = [];
-  newReminder: Reminder = {};
   dates: number = 0;
 
   constructor() {
@@ -46,8 +49,8 @@ export class Store {
     this.calender = removeReminder(this.calender, day);
   }
 
-  createReminder(day: number, reminder: Reminder) {
-    this.calender = addReminder(this.calender, day, reminder);
+  createReminder(reminder: Calendar) {
+    this.calender = addReminder(reminder, this.calender);
   }
 
   addDaysOfTheMonth(dates: number) {
