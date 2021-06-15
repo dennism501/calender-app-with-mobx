@@ -6,4 +6,5 @@ export interface Calendar {
 export interface Reminder {
   text?: string;
   date?: string;
+  color?: string;
 }

@@ -17,6 +17,7 @@ const Home: React.FunctionComponent = () => {
     const names: string[] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     const [reminderText, setReminderText] = useState<string>("")
     const [dateReminder, setDateReminder] = useState<string>("")
+    const [markerColor, setMarkerColor] = useState<string>("")
     const [day, setDay] = useState<number>(0)
     const [openModal, setOpenModal] = useState<boolean>(false)
 
@@ -31,8 +32,9 @@ const Home: React.FunctionComponent = () => {
     }
 
     function handleSaveReminder() {
-        let reminder: Calendar = { day: day, reminder: { text: reminderText, date: dateReminder } }
+        let reminder: Calendar = { day: day, reminder: { text: reminderText, date: dateReminder, color: markerColor } }
         store.createReminder(reminder)
+        setOpenModal(false)
     }
 
     function handleCloseModal() {
@@ -47,6 +49,10 @@ const Home: React.FunctionComponent = () => {
         setDateReminder(date)
     }
 
+    function handleSetMarkerColor(color: string) {
+        setMarkerColor(color)
+    }
+
 
     return (
         <>
@@ -57,6 +63,9 @@ const Home: React.FunctionComponent = () => {
                     setReminderText={handleSetReminder}
                     setReminderDate={handleSetDate}
                     saveReminder={handleSaveReminder}
+                    setMarkerColor={handleSetMarkerColor}
+
+                    date={day}
                 />
                 <CalendarHeader>
                     <DaysOfTheWeek weekDays={names} />

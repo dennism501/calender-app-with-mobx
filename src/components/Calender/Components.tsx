@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+interface MarkerProps {
+    color: string;
+}
+
+
 export const CalendarHeader = styled.section`
     display: flex;
     justify-content: space-between;
@@ -75,12 +80,14 @@ export const CalenderDay = styled.li`
 
 
 // add prop to change color for reminder icon 
-export const CalenderMarker = styled.span`
+export const CalenderMarker = styled.span<MarkerProps>`
     height: 25px;
     width: 25px;
-    background-color: #5d7bdd;
+    margin: 5px;
+    background-color: ${(props) => props.color};
     border-radius: 50%;
     display: inline-block;
+    cursor: pointer;
 `
 
 

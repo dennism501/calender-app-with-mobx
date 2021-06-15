@@ -13,7 +13,7 @@ const DaysOfTheMonth: React.FunctionComponent<Props> = ({ handleOpenModal, calen
             {calendarDates.map((day, index) => (
                 <CalenderDay onClick={() => handleOpenModal(day.day)} key={index}>
                     {day.day}
-                    {day.reminder && <CalenderMarker />}
+                    {day.reminder && <CalenderMarker color={day.reminder.color || "#5d7bdd"} />}
                 </CalenderDay>
             ))}
         </CalendarBody>
