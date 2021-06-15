@@ -3,7 +3,7 @@ import store, { Store } from "../../store/store"
 
 const initialState = new Store()
 
-const CalendarContext = createContext<Store>(initialState);
+export const CalendarContext = createContext<Store>(initialState);
 
 export const CalendarStoreProvider: React.FC = ({ children }) => {
   return <CalendarContext.Provider value={store}>{children} </CalendarContext.Provider>
