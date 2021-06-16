@@ -34,6 +34,8 @@ Original instructions are here 👉 [Instructions](README-original.md)
   - If i had more time, i would need to write test that will check whether the components are mounting with the right props.
   - Write tests to test the dayInAMonth calculations
   - Tests for the CRUD store operations
+- Ordering the reminders by timeStamp
+- Handling multiple reminders on the calender date
 - Set up Gitlab pipeline to deploy to [Netlify](https://www.netlify.com/)
 - Improve the UI
 

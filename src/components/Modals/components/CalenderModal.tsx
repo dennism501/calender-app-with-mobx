@@ -52,7 +52,7 @@ const CalendarModal: React.FunctionComponent<Props> = ({
     reminderText,
     date }) => {
 
-    const markerColors = ["#06ad83", "#5d7bdd", "#5d7bdd", "#8067e5", "#e4e9f0"]
+    const markerColors = ["#06ad83", "#5d7bdd", "#5d7bdd", "#8067e5"]
     const store = useContext(CalendarContext)
 
     return (
