@@ -88,6 +88,9 @@ export const CalenderMarker = styled.span<MarkerProps>`
     border-radius: 50%;
     display: inline-block;
     cursor: pointer;
+    &: active {
+        box-shadow: 0 0 5px #ad8706;
+    }
 `
 
 

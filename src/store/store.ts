@@ -4,10 +4,16 @@ import { Calendar } from "./interfaces/Calendar";
 /**
  * @param calender The current value of the store
  * @param day the day the reminder was set
- * @returns a new copy of the calendar store without the date passed
+ * @returns a new copy of the calendar store without a reminder on the date passed
  */
-const removeReminder = (calender: Calendar[], day: number): Calendar[] => {
-  return calender.filter((date) => date.day !== day);
+const removeReminder = (calendar: Calendar[], day: number): Calendar[] => {
+  const reducedCalendar = calendar.map((date) => {
+    if (date.day === day) {
+      return { day: day };
+    }
+    return date;
+  });
+  return (calendar = reducedCalendar);
 };
 
 /**
@@ -20,6 +26,17 @@ const addDays = (calendar: Calendar[], dates: number): Calendar[] => {
     calendar.push({ day: index });
   }
   return calendar;
+};
+
+const editReminder = (reminder: Calendar, calendar: Calendar[]): Calendar[] => {
+  let editedCalender = calendar.map((date) => {
+    if (reminder.day === date.day) {
+      return { ...reminder };
+    }
+    return date;
+  });
+
+  return (calendar = editedCalender);
 };
 
 /**
@@ -56,6 +73,10 @@ export class Store {
   addDaysOfTheMonth(dates: number) {
     this.calender = addDays(this.calender, dates);
     this.dates = 0;
+  }
+
+  editReminder(reminder: Calendar) {
+    this.calender = editReminder(reminder, this.calender);
   }
 }
 

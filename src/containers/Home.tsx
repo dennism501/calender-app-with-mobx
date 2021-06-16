@@ -18,8 +18,10 @@ const Home: React.FunctionComponent = () => {
     const [reminderText, setReminderText] = useState<string>("")
     const [dateReminder, setDateReminder] = useState<string>("")
     const [markerColor, setMarkerColor] = useState<string>("")
+    const [isEditable, setIsEditable] = useState<boolean>(false)
     const [day, setDay] = useState<number>(0)
     const [openModal, setOpenModal] = useState<boolean>(false)
+    const [errorText, setErrorText] = useState<boolean>(false)
 
     //sets the number of days in current month to the calendar store when the first page is rendered
     useEffect(() => {
@@ -32,9 +34,19 @@ const Home: React.FunctionComponent = () => {
     }
 
     function handleSaveReminder() {
-        let reminder: Calendar = { day: day, reminder: { text: reminderText, date: dateReminder, color: markerColor } }
-        store.createReminder(reminder)
-        setOpenModal(false)
+
+        if (reminderText !== "" && dateReminder !== "" && markerColor !== "") {
+            let reminder: Calendar = { day: day, reminder: { text: reminderText, date: dateReminder, color: markerColor } }
+            store.createReminder(reminder)
+            setReminderText("")
+            setDateReminder("")
+            if (isEditable) {
+                setIsEditable(false)
+            }
+        } else {
+            setErrorText(true)
+        }
+
     }
 
     function handleCloseModal() {
@@ -53,6 +65,19 @@ const Home: React.FunctionComponent = () => {
         setMarkerColor(color)
     }
 
+    function handleDeleteReminder(date: number) {
+        store.removeReminder(date)
+    }
+
+    function handleEditReminder(reminder: Calendar) {
+        setIsEditable(true)
+        setReminderText(reminder?.reminder?.text || "")
+        setDateReminder(reminder?.reminder?.date || "")
+        setMarkerColor(reminder?.reminder?.color! || "")
+
+
+    }
+
 
     return (
         <>
@@ -64,7 +89,12 @@ const Home: React.FunctionComponent = () => {
                     setReminderDate={handleSetDate}
                     saveReminder={handleSaveReminder}
                     setMarkerColor={handleSetMarkerColor}
-
+                    deleteReminder={handleDeleteReminder}
+                    editReminder={handleEditReminder}
+                    reminderText={reminderText}
+                    reminderDate={dateReminder}
+                    errorText={errorText}
+                    isEditable={isEditable}
                     date={day}
                 />
                 <CalendarHeader>

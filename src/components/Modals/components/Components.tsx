@@ -50,4 +50,12 @@ export const ColorPickerHeader = styled.span`
 
 `
 
+export const ControlsHolder = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+
+`
+
 
