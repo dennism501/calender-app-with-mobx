@@ -35,7 +35,7 @@ Original instructions are here 👉 [Instructions](README-original.md)
   - Write tests to test the dayInAMonth calculations
   - Tests for the CRUD store operations
 - Ordering the reminders by timeStamp
-- Handling multiple reminders on the calender date
+- Handling multiple reminders on the calender date by changing the reminder to reminder[] in the calendar interface and updating the CRUD operations.
 - Set up Gitlab pipeline to deploy to [Netlify](https://www.netlify.com/)
 - Improve the UI
 
@@ -53,3 +53,22 @@ Original instructions are here 👉 [Instructions](README-original.md)
 Run using `yarn run test` or `npm run test`.
 
 Tests are written using Jest and React Testing Library.
+
+### Data Structure
+
+- Main Data structures used to build with a one-to-many relation between the Calender and Reminder. One calender date can have many reminders
+
+```
+interface Calendar {
+  day: number;
+  reminder?: Reminder;
+}
+
+interface Reminder {
+  text?: string;
+  date?: string;
+  color?: string;
+}
+
+
+```
