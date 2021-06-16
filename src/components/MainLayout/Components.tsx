@@ -19,3 +19,10 @@ export const MainLayout = styled.div`
     background-color: var(--grey-200);
     border: solid 1px var(--grey-200);
 `;
+
+export const MonthButtonHolder = styled.div`
+    width: 70%;
+    display: flex;
+    margin: 15px;
+    justify-content: space-evenly;
+`;

@@ -104,9 +104,6 @@ const CalendarModal: React.FunctionComponent<Props> = ({
                                 ))
 
                             }
-
-
-
                         </ColorPicker>
                         {errorText && <span style={{ marginLeft: 10, color: "red" }}>Select color</span>}
                         <ButtonHolder>

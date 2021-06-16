@@ -1,17 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { MainLayout } from '../components/MainLayout/Components';
+import { MainLayout, MonthButtonHolder } from '../components/MainLayout/Components';
 import { CalendarHeader } from '../components/Calender/Components'
 import DaysOfTheWeek from '../components/Calender/DaysOfTheWeek';
 import DaysOfTheMonth from '../components/Calender/DaysOfTheMonth';
-import { getDateOfCurrentMonth } from '../utils/utils';
+import { getDateOfCurrentMonth, getNextMonth, getPreviousMonth } from '../utils/utils';
 import { useCalendarStore } from '../components/MobxProvider/Provider';
 import { observer } from 'mobx-react';
 import CalendarModal from '../components/Modals/components/CalenderModal';
 import { Calendar } from '../store/interfaces/Calendar';
 import { CalendarContext } from '../components/MobxProvider/Provider'
+import { Button } from '@material-ui/core';
 
 
 const Home: React.FunctionComponent = () => {
+    getNextMonth()
     const store = useContext(CalendarContext)
     let days: Calendar[] = useCalendarStore().calender
     const names: string[] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -31,6 +33,15 @@ const Home: React.FunctionComponent = () => {
     function handleOpenModal(date: number) {
         setDay(date)
         setOpenModal(!openModal)
+    }
+
+    function handlePreviousMonth() {
+        store.calender = []
+        store.addDaysOfTheMonth(getPreviousMonth())
+    }
+    function handleNextMonth() {
+        store.calender = []
+        store.addDaysOfTheMonth(getNextMonth())
     }
 
     function handleSaveReminder() {
@@ -102,6 +113,12 @@ const Home: React.FunctionComponent = () => {
                 </CalendarHeader>
                 <DaysOfTheMonth handleOpenModal={handleOpenModal} calendarDates={days} />
             </MainLayout>
+
+            <MonthButtonHolder>
+                <Button onClick={handlePreviousMonth} variant="contained">Previous Month</Button>
+                <Button onClick={handleNextMonth} variant="contained">Next month </Button>
+            </MonthButtonHolder>
+
         </>
     );
 }
