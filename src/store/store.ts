@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { action, makeAutoObservable } from "mobx";
 import { Calendar } from "./interfaces/Calendar";
 
 /**
@@ -77,6 +77,11 @@ export class Store {
 
   editReminder(reminder: Calendar) {
     this.calender = editReminder(reminder, this.calender);
+  }
+
+  @action
+  reset() {
+    this.calender = [];
   }
 }
 

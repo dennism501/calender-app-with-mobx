@@ -36,11 +36,11 @@ const Home: React.FunctionComponent = () => {
     }
 
     function handlePreviousMonth() {
-        store.calender = []
+        store.reset()
         store.addDaysOfTheMonth(getPreviousMonth())
     }
     function handleNextMonth() {
-        store.calender = []
+        store.reset()
         store.addDaysOfTheMonth(getNextMonth())
     }
 
