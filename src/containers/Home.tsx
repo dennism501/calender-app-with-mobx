@@ -10,6 +10,7 @@ import CalendarModal from '../components/Modals/components/CalenderModal';
 import { Calendar } from '../store/interfaces/Calendar';
 import { CalendarContext } from '../components/MobxProvider/Provider'
 import { Button } from '@material-ui/core';
+import { ModalParent } from '../components/Modals/components/Components';
 
 
 const Home: React.FunctionComponent = () => {
@@ -93,21 +94,23 @@ const Home: React.FunctionComponent = () => {
     return (
         <>
             <MainLayout>
-                <CalendarModal
-                    isOpen={openModal}
-                    handleOpen={handleCloseModal}
-                    setReminderText={handleSetReminder}
-                    setReminderDate={handleSetDate}
-                    saveReminder={handleSaveReminder}
-                    setMarkerColor={handleSetMarkerColor}
-                    deleteReminder={handleDeleteReminder}
-                    editReminder={handleEditReminder}
-                    reminderText={reminderText}
-                    reminderDate={dateReminder}
-                    errorText={errorText}
-                    isEditable={isEditable}
-                    date={day}
-                />
+                <ModalParent>
+                    <CalendarModal
+                        isOpen={openModal}
+                        handleOpen={handleCloseModal}
+                        setReminderText={handleSetReminder}
+                        setReminderDate={handleSetDate}
+                        saveReminder={handleSaveReminder}
+                        setMarkerColor={handleSetMarkerColor}
+                        deleteReminder={handleDeleteReminder}
+                        editReminder={handleEditReminder}
+                        reminderText={reminderText}
+                        reminderDate={dateReminder}
+                        errorText={errorText}
+                        isEditable={isEditable}
+                        date={day}
+                    />
+                </ModalParent>
                 <CalendarHeader>
                     <DaysOfTheWeek weekDays={names} />
                 </CalendarHeader>

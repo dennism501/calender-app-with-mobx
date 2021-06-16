@@ -16,6 +16,7 @@ export const MainLayout = styled.div`
     --grid-gap: 1px;
     --day-label-size: 20px;
     position: relative;
+    margin: 0 0 0 200px;  
     background-color: var(--grey-200);
     border: solid 1px var(--grey-200);
 `;
@@ -25,4 +26,5 @@ export const MonthButtonHolder = styled.div`
     display: flex;
     margin: 15px;
     justify-content: space-evenly;
+    margin: 20px 0 0 200px; 
 `;

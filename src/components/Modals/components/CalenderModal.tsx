@@ -57,7 +57,7 @@ const CalendarModal: React.FunctionComponent<Props> = ({
 
     return (
         <>
-            <Modal open={isOpen} onClose={handleOpen}>
+            <Modal style={{ top: "25%", left: "30%", width: "100%" }} open={isOpen} onClose={handleOpen}>
                 <ModalContent>
                     <ModalHeader>Set Reminder</ModalHeader>
                     <ReminderHolder>
