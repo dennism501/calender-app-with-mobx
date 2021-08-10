@@ -24,7 +24,7 @@
 ### Local setup
 
 - Install latest version of [Node here](https://nodejs.org/en/)
-- Clone repository `git clone https://gitlab.com/codelittinc/react-interview-project-dennis-mubamba.git`
+- Clone repository `git clone git@github.com:dennism501/calender-app-with-mobx.git`
 - Install dependencies: Run `yarn` or `npm install`
 - Start local dev server: Run `yarn run dev` or `npm run dev`
 - Start application: Run `yarn` or `npm start`
